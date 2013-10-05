@@ -1,0 +1,13 @@
+{application, erlspace,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+		  jiffy
+                 ]},
+  {mod, { erlspace_app, []}},
+  {env, []}
+ ]}.
