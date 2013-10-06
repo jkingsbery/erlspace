@@ -2,6 +2,8 @@
 
 -behavior(gen_server).
 
+-record(player_data,{name,x=0,y=0}).
+
 -export([start_link/0]).
 -export([init/1,handle_call/3]).
 -export([add_client/1,remove_client/1,broadcast/1,status/0]).
@@ -39,5 +41,10 @@ handle_call({broadcast,Message},_From,State)->
 broadcast_helper([],_Message)->
     ok;
 broadcast_helper([X|List],Message)->
-    gen_tcp:send(X,io_lib:format("~p~n",[Message])),
+    gen_tcp:send(X,to_string(Message)),
     broadcast_helper(List,Message).
+
+to_string(P=#player_data{})->
+    erlspace_player:to_json(P);
+to_string(Object)->
+    io_lib:format("~p~n",[Object]).

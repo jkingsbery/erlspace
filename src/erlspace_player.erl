@@ -1,6 +1,6 @@
 -module(erlspace_player).
 
--export([new/1,up/1,down/1,left/1,right/1]).
+-export([new/1,up/1,down/1,left/1,right/1,to_json/1]).
 
 -record(player_data,{name,x=0,y=0}).
 
@@ -19,4 +19,7 @@ right(Record)->
 left(Record)->
     Record#player_data{x=Record#player_data.x-1}.
     
-
+to_json(Record)->
+    jiffy:encode({[{name,list_to_binary(Record#player_data.name)},
+		   {x,Record#player_data.x},
+		   {y,Record#player_data.y}]}).
