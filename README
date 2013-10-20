@@ -1,5 +1,8 @@
 A rough outline of the design:
-* C++ front end
+* Erlang Frontend
+  * NIFs to handle C++ SDL stuff
+  * One process receives network notifications
+  * ...?
 * Erlang Backend
   * erlspace_networking: Handles Networking
   * erlspace_player: Game logic for player state
@@ -8,6 +11,8 @@ A rough outline of the design:
 Some design decisions:
 * Seems like the networking should only handle the client's communication with the game server. There should be a different set of processes for handling the player state. (That way, all game objects communicate using messages.)
 * Client needs a way to get updates pushed
+  * This is handled by the client having a separate thread to handle pushes.
+
 
 
 Tasks:

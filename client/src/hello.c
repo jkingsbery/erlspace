@@ -1,8 +1,3 @@
-/*
-  SDL Video Demo
-  demonstrates SDL's video working by moving dots around a screen
-  written by Sayuri L. Kitsune (2012)
-*/
 
 /* Defines */
 #define NUM_DOTS 10
